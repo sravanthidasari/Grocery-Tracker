@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <%- include ('../partials/head.ejs') %>
+  </head>
+    <body>
+        <h1>New Grocery Item</h1>
+        <form action="/groceries" method="POST">
+            Grocery Item: <input type="text" name="groceryItem" /><br/>
+            Item Priority: <input type="text" name="itemPriority" value= "true" || "false"/><br/>
+            Quantity: <input type="number" name="quantity" /><br/>
+            <input type="button" name="createGrocery" value="Create Grocery Item"/>
+        </form>
+    </body>
+</html>
