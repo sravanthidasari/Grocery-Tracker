@@ -1,0 +1,8 @@
+
+tr .groceries {
+    border-color: red;
+}
+
+tr .item-list{
+    padding: 30px;
+}

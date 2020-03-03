@@ -13,10 +13,8 @@
             <div><a href="/groceries">Back to groceries</a></div>
             <div><a href="/groceries/<%= groceries.groceryItem %>/edit">Edit this Item</a></div>
         </div>  
-        <table style="width:50%">
-          <tr class="item-list">
-              <tr class="grocery- Items">
-                <tr class= "item-header"><%= groceries.groceryItem %></tr>
+        <table class= groceries width:0%>
+             <tr class= "item-header"><%= groceries.groceryItem %></tr>
                   <td class="groceryItem">
                       <a href="/groceries">Back to Groceries</a>
                       <a href="/groceries/<%= groceries.groceryItem %>/edit">Edit this item</a>
@@ -34,7 +32,6 @@
                     </a>
                   </td>
               </tr>
-          </tr>
         </table>
         <form method="POST" action="/groceries/<%= groceries.groceryItem %>?_method=DELETE">
           <input type="submit" name="delete" id="delete" value="Delete this item" class="btn btn-danger" />
