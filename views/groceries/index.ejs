@@ -1,21 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head>
+  <head>
     <%- include ('../partials/head.ejs') %>
   </head>
-    <body>
-        <h1>Grocery Tracker</h1>
-        <table style="width:50%">
-          <tr class item-list>
-            <th>Grocery Item</th>
-          </tr>
-          <tr>
-            <td>Item Priority</td>
-          </tr>
-          <tr>
-            <td>Quantity in stock</td>
-          </tr>
-        </table>
-        <button onclick= href="/groceries/new">Add grocery item</button>
-    </body>
+  <body>
+    <h1>Grocery Tracker</h1>
+    <table style="width:0%">
+      <tr class item-list>
+        <th>Grocery Item</th>
+        <th>Item Priority</th>
+        <th>Restock Quantity</th>
+        <th>Consume Quantity</th>
+      </tr>
+      <% for (let index in groceries) { %>
+      <tr class="grocery- Items">
+        <td class="groceryItem">
+          <a href="/groceries/<%= groceries[index].groceryItem %>">
+            <%= groceries[index].groceryItem %>
+          </a>
+        </td>
+        <td class="itemPriority">
+          <a href="/groceries/<%= groceries[index].itemPriority %>">
+            <%= groceries[index].itemPriority %>
+          </a>
+        </td>
+        <td class="restockQuantity">
+          <a href="/groceries/<%= groceries[index].restockPriority %>">
+            <%= groceries[index].restockQuatity %>
+          </a>
+        </td>
+        <td class="consumeQuantity">
+          <a href="/groceries/<%= groceries[index].consumeQuantity %>">
+            <%= groceries[index].consumeQuantity %>
+          </a>
+        </td>
+      </tr>
+      <% } %>
+    </table>
+
+    <button onclick="window.location.href='/groceries/new';">Add grocery item</button>
+  </body>
 </html>

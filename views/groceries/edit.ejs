@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include ('../partials/head.ejs') %>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title-header">Edit Grocery Item</h1>
+      <div class="main-links">
+        <div><a href="/groceriess">Back to groceries</a></div>
+      </div>
+      <div>
+        <form action="/groceriess/<%= groceries.groceryItem %>?_method=PUT" method="POST">
+          <h1>Grocery Tracker</h1>
+          <table style="width:0%">
+            <tr class item-list>
+              <th>
+                Grocery Item
+                <input type="text" name="Item" size="50" value="<%= groceries.groceryItem %>" />
+              </th>
+              <th>
+                Item Priority
+                <input type="text" name="Item" size="50" value="<%= groceries.itemPriority %>" />
+              </th>
+              <th>
+                Restock Quantity
+                <input type="text" name="Item" size="50" value="<%= groceries.restockQuantity %>" />
+              </th>
+              <th>
+                Consume Quantity
+                <input type="text" name="Item" size="50" value="<%= groceries.consumeQuantity %>" />
+              </th>
+            </tr>
+          </table>
+          <div class="main-links bottom">
+              <input class="btn btn-normal" type="reset" value="Undo changes" />
+              <input class="btn btn-primary" type="submit" id="submit" value="Update Grocery Item" />
+            </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

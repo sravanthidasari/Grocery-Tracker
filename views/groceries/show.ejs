@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <%- include ('../partials/head.ejs') %>
+</head>
+<body>
+    <div class="container">
+      <% if (groceries === undefined) { %>
+        <h1>No groceries to show</h1>
+      <% } else { %>
+        <h1 class="groceryItem-header"><%= groceries.groceryItem %></h1>
+        <div class="main-links">
+            <div><a href="/groceries">Back to groceries</a></div>
+            <div><a href="/groceries/<%= groceries.groceryItem %>/edit">Edit this Item</a></div>
+        </div>  
+        <table style="width:50%">
+          <tr class="item-list">
+              <tr class="grocery- Items">
+                <tr class= "item-header"><%= groceries.groceryItem %></tr>
+                  <td class="groceryItem">
+                      <a href="/groceries">Back to Groceries</a>
+                      <a href="/groceries/<%= groceries.groceryItem %>/edit">Edit this item</a>
+                  </td>
+                  <td class="itemPriority">
+                      <%= groceries.itemPriority %>
+                    </a>
+                  </td>
+                  <td class="restockQuantity">
+                      <%= groceries.restockQuatity %>
+                    </a>
+                  </td>
+                  <td class="consumeQuantity">
+                      <%= groceries.consumeQuantity %>
+                    </a>
+                  </td>
+              </tr>
+          </tr>
+        </table>
+        <form method="POST" action="/groceries/<%= groceries.groceryItem %>?_method=DELETE">
+          <input type="submit" name="delete" id="delete" value="Delete this item" class="btn btn-danger" />
+        </form>
+    </div>
+</body>
+</html>

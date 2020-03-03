@@ -1,12 +1,16 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const grocerySchema = new mongoose.Schema({
-    groceryItem: {type:String, required:true},
-    itemPriority: {type:String, priority: low || high },
-    quantity: {type: Number, required: true}
-})
+const grocerySchema = new mongoose.Schema(
+  {
+    groceryItem: { type: String, required: true },
+    itemPriority: String,
+    restockQuantity: { type: Number, required: true },
+    consumeQuantity: { type: Number, required: true }
+  },
+  {
+    timestamps: true
+  }
+);
 
-
-const Quantity = mongoose.model('grocery', grocerySchema);
-
+const Quantity = mongoose.model("grocery", grocerySchema);
 module.exports = Quantity;
