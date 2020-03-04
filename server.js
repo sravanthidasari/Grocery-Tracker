@@ -1,21 +1,26 @@
 const express = require("express");
+const methodOverride = require('method-override');
 const mongoose = require("mongoose");
 const app = express();
-const methodOverride = require('method-override');
 const db = mongoose.connection;
-const PORT = 3000;
 
+const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/groceries';
+
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+
+db.on('error', (err) => console.log(err.message));
+db.on('connected', () => console.log(`mongo connected at: ${MONGODB_URI}`));
+db.on('disconnected', () => console.log('mongo disconnected'));
+
+// Open the connection to mongo
+db.on('open', () => {});
 
 app.use(express.static('public'));
-app.use(methodOverride('_method'));
 app.use(express.urlencoded({extended:false}));
-
-mongoose.connect('mongodb://localhost:27017/groceries', { useNewUrlParser: true });
-mongoose.connection.once('open', ()=> {
-    console.log('connected to mongo');
-});
+app.use(methodOverride('_method'));
 
 const groceryController = require('./controllers/grocery.js')
 app.use('/groceries', groceryController)
 
-app.listen(PORT);
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
