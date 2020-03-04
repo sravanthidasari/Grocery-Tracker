@@ -1,8 +1,45 @@
-
 tr .groceries {
-    border-color: red;
+  border-color: red;
 }
 
-tr .item-list{
-    padding: 30px;
+tr .item-list {
+  padding: 30px;
+}
+
+nav {
+  margin-bottom: 25px;
+}
+
+.main-links {
+  display: flex;
+  margin-bottom: 25px;
+}
+
+.main-links .back {
+ text-align: start;
+}
+
+.main-links .edit {
+  text-align: end;
+}
+
+.main-links a {
+  margin-right: 15px;
+}
+
+.footer-links {
+  display: flex;
+  margin-top: 25px;
+}
+
+.footer-links .footer-link {
+  margin-right: 15px;
+}
+
+.item-name {
+  text-transform: capitalize;
+}
+
+.items-list {
+  margin-top: 25px;
 }

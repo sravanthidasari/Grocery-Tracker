@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <% include ('../partials/head.ejs') %>
+    <%- include ('../partials/head.ejs') %>
   </head>
   <body>
-    <h1>Grocery Tracker</h1>
-    <table class= groceries width:0% border: red >
-      <tr class item-list>
-        <th>Grocery Item</th>
-        <th>Item Priority</th>
-        <th>Restock Quantity</th>
-        <th>Consume Quantity</th>
-      </tr>
-      <% for (let index in groceries) { %>
-      <tr class="grocery- Items">
-        <td class="groceryItem">
-          <a href="/groceries/<%= groceries[index].groceryItem %>">
-            <%= groceries[index].groceryItem %>
-          </a>
-        </td>
-        <td class="itemPriority">
-          <a href="/groceries/<%= groceries[index].itemPriority %>">
+    <div class="container">
+      <h1 class="title-header">Grocery Tracker</h1>
+      <table class="table table-striped table-bordered items-list">
+        <thead class="table-info">
+          <th>Grocery Item</th>
+          <th>Item Priority</th>
+          <th>Restock Quantity</th>
+          <th>Consume Quantity</th>
+          <th>Total Quantity</th>
+        </thead>
+        <% for (let index in groceries) { %>
+        <tr class="grocery-items">
+          <td class="item-name <%= groceries[index].itemPriority === 'high' ? 'table-danger' : '' %>">
+            <a href="/groceries/<%= groceries[index].groceryItem %>">
+              <%= groceries[index].groceryItem %>
+            </a>
+          </td>
+          <td class="itemPriority">
             <%= groceries[index].itemPriority %>
-          </a>
-        </td>
-        <td class="restockQuantity">
-          <a href="/groceries/<%= groceries[index].restockPriority %>">
-            <%= groceries[index].restockQuatity %>
-          </a>
-        </td>
-        <td class="consumeQuantity">
-          <a href="/groceries/<%= groceries[index].consumeQuantity %>">
+          </td>
+          <td class="restockQuantity text-right">
+            <%= groceries[index].restockQuantity %>
+          </td>
+          <td class="consumeQuantity text-right">
             <%= groceries[index].consumeQuantity %>
-          </a>
-        </td>
-      </tr>
-      <% } %>
-    </table>
+          </td>
+          <td class="totalQuantity text-right">
+            <%= groceries[index].totalQuantity %>
+          </td>
+        </tr>
+        <% } %>
+      </table>
 
-    <button onclick="window.location.href='/groceries/new';">Add grocery item</button>
+      <div class="footer-links">
+        <button class="btn btn-primary footer-link" onclick="window.location.href='/groceries/new';">Add grocery item</button>
+      </div>
+    </div>
   </body>
 </html>

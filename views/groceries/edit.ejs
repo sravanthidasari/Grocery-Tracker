@@ -5,39 +5,45 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="title-header">Edit Grocery Item</h1>
-      <div class="main-links">
-        <div><a href="/groceriess">Back to groceries</a></div>
-      </div>
-      <div>
-        <form action="/groceriess/<%= groceries.groceryItem %>?_method=PUT" method="POST">
-          <h1>Grocery Tracker</h1>
-          <table class= groceries width:0%>
-            <tr class item-list>
-              <th>
-                Grocery Item
-                <input type="text" name="Item" size="50" value="<%= groceries.groceryItem %>" />
-              </th>
-              <th>
-                Item Priority
-                <input type="text" name="Item" size="50" value="<%= groceries.itemPriority %>" />
-              </th>
-              <th>
-                Restock Quantity
-                <input type="text" name="Item" size="50" value="<%= groceries.restockQuantity %>" />
-              </th>
-              <th>
-                Consume Quantity
-                <input type="text" name="Item" size="50" value="<%= groceries.consumeQuantity %>" />
-              </th>
-            </tr>
-          </table>
-          <div class="main-links bottom">
-              <input class="btn btn-normal" type="reset" value="Undo changes" />
-              <input class="btn btn-primary" type="submit" id="submit" value="Update Grocery Item" />
-            </div>
-        </form>
-      </div>
+      <h1 class="title-header"><%= groceries.groceryItem %></h1>
+      <%- include ('../partials/nav-start.ejs') %>
+        <li class="nav-item">
+          <a class="nav-link" href="/groceries/<%= groceries.groceryItem %>">Back to item</a>
+        </li>
+      <%- include ('../partials/nav-end.ejs') %>
+      <form action="/groceries/<%= groceries.groceryItem %>?_method=PUT" method="POST">
+        <table class="table table-striped table-bordered">
+          <tr>
+            <th>Restock Quantity</th>
+            <td>
+              <div class="restockQuantity">
+                <input type="number" min="1" name="restockQuantity" value="<%= groceries.restockQuantity %>" />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>Consume Quantity</th>
+            <td>
+              <div class="consumeQuantity">
+                <input type="number" min="1" name="consumeQuantity" value="<%= groceries.consumeQuantity %>" />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>Total Quantity</th>
+            <td>
+              <div class="totalQuantity">
+                <input type="number" name="totalQuantity" value="<%= groceries.totalQuantity %>" />
+              </div>
+            </td>
+          </tr>
+        </table>
+
+        <div class="footer-links">
+          <input class="btn btn-primary footer-link" type="submit" id="submit" value="Update Grocery Item" />
+          <input class="btn btn-warning footer-link" type="reset" id="reset" value="Undo changes" />
+        </div>
+      </form>
     </div>
   </body>
 </html>
